@@ -1,0 +1,722 @@
+@import url(https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css);
+@import url(https://use.fontawesome.com/releases/v5.6.4/css/all.css);
+@import url(https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Roboto:wght@500;700;900&display=swap);
+@charset "utf-8";
+
+/* Theme Name: DesignDrawer
+Author:hina
+ */
+$main:#2B0065;
+$orange:#E86B00;
+$bg-blue:#84D0D6;
+$base:#FFF3E8;
+$blue:#00EBFF;
+
+$pc: 1025px; // pc
+$tab: 600px; // タブレット
+
+//メディアクエリ
+@mixin pc {
+  @media (min-width: ($pc)) {
+    @content;
+  }
+}
+@mixin tab {
+  @media (min-width: ($tab)) {
+    @content;
+  }
+}
+
+
+body {
+  background-color: $base;
+  text-align: center;
+  color: $main; 
+  font-family: 'Roboto', 'Noto Sans JP',sans-serif;
+}
+
+img {
+  vertical-align: bottom;
+}
+
+a {
+  text-decoration: none;
+}
+//ヘッダー *****************************************
+header {
+  .top-bar {
+    height: 40px;
+    background-image: linear-gradient( 69.2deg,  rgba(232,107,0,1) -2%, rgba(249,149,0,1) 112.9% );
+    .top-bar-inner {
+      height: 40px;
+      width: 90%;
+      max-width: 1200px;
+      display: flex;
+      align-items: center;
+      margin: 0 auto;
+    }
+    a {
+      margin-left: 20px;
+    }
+    img {
+      width: 23px;
+    }
+  }
+  .nav-block {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0px auto 50px;
+    box-shadow: 0px 5px 15px -5px #2f1c47;
+    border-radius: 5px;
+    background-image: linear-gradient( 66deg,  rgba(43,0,101,1) -3.7%, rgba(77,56,180,1) 118.5% );
+    .sp-flex {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      @include tab {
+        justify-content: center;
+      }
+      img {
+        width: 46px;
+        margin: 10px;
+      }
+    }
+    .head-nav {
+      display: none;
+      @include tab {
+        display: block;
+      }
+      .nav-parent {
+        display: block;
+        padding-bottom: 10px;
+        margin: 0 auto;
+        @include tab {
+          margin-left: 20px;
+        }
+        li {
+          padding: 10px;
+        }
+        a{
+          line-height: 1.2;
+          display: block;
+          color: #fff;
+          font-size: 16px;
+          font-weight: 700;
+          &:hover {
+            color: $blue;
+            text-shadow: 0 0 10px #000;
+          }
+          @include tab {
+            font-size: 18px;
+          }
+          span {
+            display: block;
+            font-size: 12px;
+            font-weight: 400;
+          }
+        } 
+        @include tab {
+          display: flex;
+        }
+      }
+      .nav-child {
+        display: none;
+        background-color: $main;
+        box-shadow: 0px 5px 15px -5px #290f49 inset;
+        border-radius: 5px;
+        margin-top: 10px;
+        @include tab {
+          position: absolute;
+          box-shadow: 0px 5px 15px -5px #211233;
+          margin-top: 20px;
+          background-color: $bg-blue;
+          width: 150px;
+        }
+        li {
+          padding: 10px;
+        }
+        a{
+          line-height: 1.2;
+          display: block;
+          color: #fff;
+          font-size: 14px;
+          font-weight: 400;
+          &:hover {
+            color: $blue;
+            text-shadow: 0 0 10px #000;
+            @include tab {
+              color: #fff;
+              text-shadow: none;
+            }
+          }
+          @include tab {
+            font-size: 16px;
+            color: $main;
+          }
+        } 
+      }
+    }
+  }
+}
+.none-a{
+  pointer-events: none;
+}
+.menu-trigger,
+.menu-trigger span {
+  display: inline-block;
+  transition: all .4s;
+  box-sizing: border-box;
+}
+.menu-trigger {
+  @include tab {
+    display: none;
+  }
+  position: relative;
+  width: 40px;
+  height: 36px;
+  background: none;
+  border: none;
+  appearance: none;
+  cursor: pointer;
+  margin-right: 10px;
+}
+.menu-trigger span {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background-color: #fff;
+  border-radius: 4px;
+}
+.menu-trigger span:nth-of-type(1) {
+  top: 0;
+}
+.menu-trigger span:nth-of-type(2) {
+  top: 16px;
+}
+.menu-trigger span:nth-of-type(3) {
+  bottom: 0;
+}
+
+.menu-trigger.active span:nth-of-type(1) {
+  width: 45%;
+  transform: translate3d(2px, 10px, 0) rotate(405deg);
+}
+.menu-trigger.active span:nth-of-type(2) {
+  transform: translate3d(-1px, 2px, 0) rotate(-45deg);
+}
+.menu-trigger.active span:nth-of-type(3) {
+  width: 45%;
+  transform: translate3d(19px, -5px, 0) rotate(405deg);
+}
+
+.container {
+  width: 100%;
+  max-width: 1000px;
+  padding: 0 10px;
+  box-sizing: border-box;
+
+  @include pc {
+    margin: 0 auto;
+  }
+}
+
+.mv {
+  margin: 0 auto;
+  padding: 30px 0;
+  display: flex;
+  justify-content: space-around;
+  background-color: $main;
+  border-radius: 69% 31% 64% 36% / 44% 56% 44% 56%;
+  @include tab {
+    padding: 70px 0;
+  }
+  div:last-child {
+    margin-top: 100px;
+    @include tab {
+      margin-top: 70px;
+    }
+  }
+  img {
+    width: 100%;
+  }
+  p {
+    font-size: 16px;
+    color: $blue;
+    letter-spacing: 5px;
+    font-size: 14px;
+    margin: 10px;
+    font-weight: 700;
+    line-height: 1.2;
+    br {
+      @include pc {
+        display: none;
+      }
+    }
+  }
+  .name{
+    font-size: 36px;
+    color: $orange;
+    font-weight: 900;
+    line-height: 1;
+  }
+}
+
+.post {
+  margin-top: 100px;
+  .post-title {
+    display: flex;
+    margin-bottom: 30px;
+  }
+  h2 {
+    white-space: nowrap;
+    margin-right: 20px;
+    text-align-last: left;
+    font-size: 20px;
+    line-height: 1.5;
+    span {
+      display: block;
+      font-size: 14px;
+    }
+  }
+  .bar {
+    display: block;
+    height: 6px;
+    width: 100%;
+    background-color: $main;
+    margin-top: 10px;
+  }
+}
+
+
+.contact {
+  margin: 100px auto 0;
+  background-color: $bg-blue;
+  border-radius: 30px;
+  padding: 20px 0;
+  width: 100%;
+  text-align: center;
+  @include tab {
+    width: 400px;
+  }
+  h2 a {
+    font-size: 30px;
+    line-height: 1.8;
+    color: #fff;
+    text-shadow: 0 0 5px #3f6d84;
+    font-weight: 700;
+    @include tab {
+      font-size: 36px;
+    }
+    span {
+      font-size: 16px;
+      display: block;
+    }
+    &:hover {
+      text-shadow: 0 0 10px #54797c;
+    }
+  }
+  img {
+    width: 80%;
+    max-width: 300px;
+    padding-top: 30px;
+  }
+}
+
+.sns {
+  margin-top: 100px;
+  text-align: center;
+  p {
+    text-align: center!important;
+  }
+  .sns-icon {
+    display: flex;
+    justify-content: center;
+    a{
+      margin: 20px;
+    }
+    img {
+      width: 50px;
+      filter: drop-shadow(0px 1px 3px #625375);
+      &:hover {
+        filter: drop-shadow(0px 5px 10px #7b6e8d);
+      }
+    }
+  }
+}
+//トップへ戻るボタン ******************
+#page_top{
+  width: 90px;
+  height: 90px;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  opacity: 0.6;
+}
+#page_top a{
+  position: relative;
+  display: block;
+  width: 90px;
+  height: 90px;
+  text-decoration: none;
+}
+#page_top a::before{
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  content: '\f102';
+  font-size: 25px;
+  color: $orange;
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  top: -40px;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
+  text-align: center;
+}
+#page_top a::after{
+  content: 'PAGE TOP';
+  font-size: 13px;
+  color: #fff;
+  position: absolute;
+  top: 45px;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
+  text-align: center;
+  color: $orange;
+}
+
+//フッター **************************************************
+footer {
+  padding-top: 30px ;
+  padding-bottom: 10px;
+  margin-top: 100px;
+  background-image: linear-gradient( 66deg,  rgba(43,0,101,1) -3.7%, rgba(77,56,180,1) 118.5% );
+  box-shadow: 5px 0px 15px -5px #2f1c47;
+  color: #fff;
+  line-height: 1.5;
+  .footer-front {
+    font-size: 16px;
+    img {
+      width: 100px;
+    }
+  }
+  .pc-flex {
+    text-align: center;
+    @include pc {
+      display: flex;
+      justify-content: space-around;
+      flex-direction: row-reverse;
+      align-items: center;
+    }
+  }
+  nav {
+    line-height: 1.2;
+    .nav-parent-f {
+      margin-bottom: 50px;
+      @include tab {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        margin: 0;
+      }
+      li {
+        padding: 10px;
+      }
+      a{
+        line-height: 1.2;
+        display: block;
+        color: #fff;
+        font-size: 16px;
+        font-weight: 700;
+        &:hover {
+          color: $blue;
+          text-shadow: 0 0 10px #000;
+        }
+        @include tab {
+          font-size: 18px;
+        }
+        span {
+          display: block;
+          font-size: 12px;
+          font-weight: 400;
+        }
+      } 
+    }
+    .nav-child {
+      display: none;
+      margin-top: 10px;
+      background-color: $main;
+      box-shadow: 0px 5px 15px -5px #290f49 inset;
+      border-radius: 5px;
+      @include tab {
+        display: block;
+        margin-top: 20px;
+        box-shadow: none;
+        background-color:  transparent;
+      }
+      li {
+        padding: 5px;
+      }
+      a{
+        line-height: 1.2;
+        display: block;
+        color: #fff;
+        font-size: 12px;
+        font-weight: 400;
+        &:hover {
+          color: $blue;
+          text-shadow: 0 0 10px #000;
+        }
+        @include pc {
+          font-size: 14px;
+        }
+      } 
+    }
+  }  .footer-front {
+    text-align-last: center;
+    @include pc {
+      text-align-last: left;
+    }
+  }
+  .footer-back {
+    p {
+      text-align: center;
+    }
+    .policy {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 12px;
+      a{
+        margin: 5px;
+        color: #fff;
+        &:hover {
+          color: $blue;
+          text-shadow: 0 0 10px #000;
+        }
+      }
+    }
+    small {
+      font-size: 12px;
+    }
+  }
+}
+
+
+// ****************************下層ページ*****************************
+.page-content {
+  line-height: 1.5;
+  width: 100%;
+  max-width: 1000px;
+  padding: 0 10px;
+  box-sizing: border-box;
+  text-align: left;
+
+  @include pc {
+    margin: 0 auto;
+  }
+  h2 {
+    font-size: 30px;
+    font-weight: 700;
+    @include tab {
+      font-size: 36px;
+    }
+  }
+}
+.about {
+  p {
+    font-size: 18px;
+  }
+  .vision {
+    margin: 10px 0;
+    font-size: 26px;
+    font-weight: 700;
+    @include tab {
+      font-size: 30px;
+      & br {
+        display: none;
+      }
+    }
+  }
+  img {
+    display: block;
+    width: 80%;
+    margin: 10px auto 0;
+    @include tab {
+      text-align: right;
+      width: 490px;
+      margin-right: 0;
+    }
+  }
+}
+
+.blog {
+  .post-title {
+    display: flex;
+    margin-bottom: 10px;
+  }
+  h3 {
+    white-space: nowrap;
+    margin-right: 20px;
+    text-align-last: left;
+    font-size: 20px;
+    line-height: 1.5;
+    span {
+      display: block;
+      font-size: 14px;
+    }
+  }
+  .bar {
+    display: block;
+    height: 6px;
+    width: 100%;
+    background-color: $main;
+    margin-top: 10px;
+  }
+}
+
+// wp 投稿一覧 ************************
+.post-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 100px;
+  article {
+    position: relative;
+    width: 300px;
+    height: 200px;
+    margin: 20px 10px;
+    box-shadow: 0px 0px 15px -5px #b5997a;
+    border-radius: 5px;
+  }
+  a {
+    word-wrap: break-word;
+    width: 300px;
+    height: 200px;
+    &:hover>img{
+      filter: invert(100%);
+    }
+  }
+    img{
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 5px;
+    background-color: #fff;
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+  }
+  p {
+    text-align: left;
+    line-height: 1.2;
+    font-size: 16px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 300px;
+    color: #fff;
+    padding: 5px;
+    box-sizing: border-box;
+    background-color: rgba(80, 80, 80, 0.5)
+    ;
+    border-radius: 0 0 5px 5px;
+  }
+}
+// wp 投稿内容 *********************************
+.single {
+
+  p {
+    text-align: left;
+    line-height: 1.5;
+  }
+  .wp-block-image {
+    width: 100%;
+    img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      background-color: $bg-blue;
+    }
+  }
+  .post-categories {
+    margin-top: 20px;
+    display: flex;
+    li {
+      margin: 5px;
+    }
+    a {
+      padding: 3px 10px;
+      border: $orange 1px solid;
+      border-radius: 5px;
+      color: $orange;
+      font-size: 14px;
+    }
+  }
+//前後の投稿ナビゲーション
+  .post-nav {
+    text-align: center;
+    margin: 100px auto 0;
+    li {
+      margin: 10px;
+      a {
+        width: 90%;
+        height: 200px;
+        text-align: left;
+        display: flex;
+        justify-content: left;
+        background-color: #fff;
+        align-items: center;
+        display: flex;
+        color: $orange;
+        margin: 0 auto;
+        padding: 5px;
+        box-shadow: 0px 0px 15px -5px #b5997a;
+        border-radius: 5px;
+        &:hover {
+          box-shadow: 0px 0px 20px 3px #d1b493b6;
+        }
+        img {
+          width: 40%;
+          height: 200px;
+          object-fit: cover;
+          margin-right: 20px;
+        }
+      }
+    }
+  }
+}
+
+
+//contact-form ***************************
+.contact-form {
+text-align-last: left;
+width: 80%;
+margin: 0 auto;
+input {
+  height: 20px;
+  width: 100%;
+}
+textarea {
+  resize: vertical;
+  width: 100%;
+  height: 200px;
+}
+.wpcf7-submit {
+  text-align: center;
+  width: 70px;
+  padding: 0 20px;
+  height: 30px;
+  border-radius: 10px;
+  background-color: $orange;
+  border: none;
+  color: #fff;
+}
+}
+
+
